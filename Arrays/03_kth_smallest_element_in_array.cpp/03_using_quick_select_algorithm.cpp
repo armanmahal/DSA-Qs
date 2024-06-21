@@ -50,13 +50,13 @@ int kth_Smallest_Element(vector<int> &arr, int l, int r, int k)
     int pivotIndex = partition(arr, l, r);
 
     // if the partitionIndex is the k-th smallest element
-    if (pivotIndex - l == k - 1)
+    if (pivotIndex == k - 1)
     {
         return arr[pivotIndex];
     }
 
     // If partitionIndex is more, recur for the left subarray
-    else if (pivotIndex - l > k - 1)
+    else if (pivotIndex > k - 1)
     {
         return kth_Smallest_Element(arr, l, pivotIndex - 1, k);
     }
@@ -64,7 +64,7 @@ int kth_Smallest_Element(vector<int> &arr, int l, int r, int k)
     // Else recur for the right subarray
     else
     {
-        return kth_Smallest_Element(arr, pivotIndex + 1, r, k - (pivotIndex - l + 1));
+        return kth_Smallest_Element(arr, pivotIndex + 1, r, k);
     }
 }
 
